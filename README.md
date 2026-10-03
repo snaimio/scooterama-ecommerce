@@ -11,13 +11,31 @@ A modern, responsive e-commerce web platform for high-performance urban electric
 
 ---
 
-## 📸 Key Features & User Experience
+## 📸 Visual Guide & Interface Walkthrough
 
-- **Interactive Product Modal (`#productCard`)**: Dynamic modal overlay with animated entrance and exit showing high-resolution imagery, detailed specifications, price tags, and custom quantity selectors.
-- **Slide-Out Bottom Cart Panel (`#cartPanel`)**: Animated drawer allowing users to inspect itemized line totals, individual unit counts, and instant total recalculations.
-- **LocalStorage Data Persistence**: Preserves cart contents across browser sessions and page refreshes by serializing and deserializing cart state.
-- **Responsive Mobile Navigation**: Custom hamburger toggle menu with smooth easing animations (`toggleMenu` / `closeNav`).
-- **Comprehensive Landing Experience**: Multi-section structure spanning Hero, Brand Story (About), Lookbook Collections, Dynamic Products Grid, Sustainability Projects, and Contact inquiries.
+### 1. Hero Landing & Off-Canvas Navigation Menu
+The landing view features a bold California-inspired aesthetic with fixed branding, social links, floating real-time cart counter, and an off-canvas slide-out drawer menu.
+
+<div align="center">
+  <img src="assets/screenshots/01-hero-and-navigation.png" alt="Scooterama Hero Section and Off-Canvas Navigation" width="850">
+</div>
+
+- **Off-Canvas Navigation Drawer**: Triggered via the hamburger icon with smooth jQuery slide animations (`right: 0` $\leftrightarrow$ `right: -226px`).
+- **Floating Cart Badge**: Displays real-time aggregate item count with instant visual feedback.
+- **Fixed Social & Brand Header**: Seamless fixed positioning providing immediate accessibility across all sections.
+
+---
+
+### 2. Lookbook Collections & Dynamic Product Grid
+A visual showcase featuring curated scooter model records and a dynamically rendered e-commerce product catalog.
+
+<div align="center">
+  <img src="assets/screenshots/02-collections-and-products-grid.png" alt="Scooterama Collections and Product Grid" width="850">
+</div>
+
+- **Curated Collections**: 6-item responsive visual gallery showcasing vintage and modern electric scooter variants.
+- **Dynamic Product Cards**: Programmatically rendered from the `scooterProducts` data source via JavaScript DOM injection.
+- **Interactive Modal Triggers**: Clicking any product card opens the animated product overlay modal (`#productCard`) with specifications, dynamic imagery, and quantity controls.
 
 ---
 
@@ -25,8 +43,8 @@ A modern, responsive e-commerce web platform for high-performance urban electric
 
 | Feature | Technical Architecture |
 | :--- | :--- |
-| **Object-Oriented Programming** | `Cart` and `Item` domain classes manage items, deduplication, quantity increments, and total calculations |
-| **LocalStorage Serialization** | Custom delimiter serialization (`0;0;1;`) loaded on `$(document).ready` for instant session recovery |
+| **Object-Oriented Programming (OOP)** | `Cart` and `Item` domain classes handle item models, line-item deduplication, quantity increments, and total calculations |
+| **LocalStorage Serialization** | Delimiter serialization (`0;0;1;`) loaded on `$(document).ready` for instant session recovery across browser restarts |
 | **Dynamic DOM Templating** | Dynamic product card generation, event attachment, and modal population |
 | **Animated Transitions** | Fluid UI animations using jQuery animation easing for off-canvas nav, top modal, and bottom cart drawer |
 | **Defensive Input Handling** | Ternary validation `quantity = (quantity >= 1) ? quantity : 1` prevents invalid cart quantities |
@@ -75,7 +93,10 @@ Designed with a mobile-first philosophy using modern CSS Grid and Flexbox:
 ```text
 scooterama-ecommerce/
 ├── assets/
-│   └── images/          # Scooter catalog images, icons, and branding assets
+│   ├── images/          # Scooter catalog images, icons, and branding assets
+│   └── screenshots/     # UI walkthrough captures and interface showcases
+│       ├── 01-hero-and-navigation.png
+│       └── 02-collections-and-products-grid.png
 ├── css/
 │   └── app.css          # CSS Grid system, modal overlays, drawer styles, responsive rules
 ├── js/
@@ -86,7 +107,7 @@ scooterama-ecommerce/
 ├── index.html           # Main application entry point
 ├── LICENSE              # MIT License
 ├── .gitignore           # Git ignore rules
-└── README.md            # Project documentation
+└── README.md            # Project documentation & visual guide
 ```
 
 ---
